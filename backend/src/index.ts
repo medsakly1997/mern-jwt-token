@@ -1,14 +1,11 @@
 import express, { Request, Response } from "express";
-import { PORT as port } from "../src/constants/env";
-import { NODE_ENV } from "../src/constants/env";
 import dotenv from "dotenv";
 import connectToDatabase from "./config/db";
+import { NODE_ENV, PORT } from "./constants/env";
 dotenv.config();
 
 // Create a new express application instance
 const app = express();
-
-// Set the network port
 
 // Define the root path with a greeting message
 app.get("/", (req: Request, res: Response) => {
@@ -16,10 +13,10 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 // Start the Express server
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`[${new Date().toISOString()}] Server Information:`);
   console.log(`  • Environment: ${NODE_ENV}`);
-  console.log(`  • Server URL: http://localhost:${port}`);
+  console.log(`  • Server URL: http://localhost:${PORT}`);
 
   connectToDatabase();
 });
