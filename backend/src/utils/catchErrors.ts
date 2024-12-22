@@ -1,4 +1,4 @@
-import { NextFunction } from "express";
+import { Request, Response, NextFunction } from "express";
 
 type AsyncController = (
   req: Request,
@@ -15,4 +15,5 @@ const catchErrors =
       next(err);
     }
   };
+
 export default catchErrors;

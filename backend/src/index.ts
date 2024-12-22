@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import connectToDatabase from "./config/db";
 import { APP_ORIGIN, NODE_ENV, PORT } from "./constants/env";
 import errorHandler from "./middleware/errorHandler";
+import authRoutes from "./routes/auth.route";
 dotenv.config();
 
 // Create a new express application instance
@@ -25,6 +26,8 @@ app.get("/", (req: Request, res: Response) => {
   res.json({ message: "Welcome to the Express + TypeScript Server!" });
 });
 
+//auth routes
+app.use("/auth", authRoutes);
 app.use(errorHandler);
 
 // Start the Express server
